@@ -78,12 +78,12 @@ if st.button("Add Entry"):
         "Profit": round(profit, 2)
     })
     supabase.table("vehicle_records").insert({
-    "vehicle_no": vehicle_num,
-    "weight_mund": round(weight_in_mund, 2),
-    "broker_cost": round(buying_cost, 2),
-    "total_cost": round(total_cost, 2),
-    "company_revenue": round(selling_revenue, 2),
-    "profit": round(profit, 2)
+    "Vehicle_no": vehicle_num,
+    "Weight_mund": round(weight_in_mund, 2),
+    "Broker_cost": round(buying_cost, 2),
+    "Total_cost": round(total_cost, 2),
+    "Company_Cost": round(selling_revenue, 2),
+    "Profit": round(profit, 2)
 }).execute()
 
     st.success("Entry added successfully!")
