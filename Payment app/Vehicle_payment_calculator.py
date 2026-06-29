@@ -1,4 +1,10 @@
 import streamlit as st
+from supabase import create_client
+
+url = st.secrets["SUPABASE_URL"]
+key = st.secrets["SUPABASE_KEY"]
+
+supabase = create_client(url, key)
 
 st.set_page_config(page_title="Vehicle Payment Calculator")
 
@@ -71,6 +77,14 @@ if st.button("Add Entry"):
         "Company Revenue": round(selling_revenue, 2),
         "Profit": round(profit, 2)
     })
+    supabase.table("vehicle_records").insert({
+    "vehicle_no": vehicle_num,
+    "weight_mund": round(weight_in_mund, 2),
+    "broker_cost": round(buying_cost, 2),
+    "total_cost": round(total_cost, 2),
+    "company_revenue": round(selling_revenue, 2),
+    "profit": round(profit, 2)
+}).execute()
 
     st.success("Entry added successfully!")
 
